@@ -5,8 +5,8 @@ from __future__ import annotations
 import click
 
 from ..honeypot.telnet_honeypot import simulate_telnet_login, get_default_credentials, create_session, simulate_command
-from ..honeypot.http_honeypot import simulate_http_request, get_supported_devices
-from ..honeypot.mqtt_honeypot import simulate_mqtt_message, get_iot_topics, simulate_broker_status
+from ..honeypot.http_honeypot import simulate_http_request
+from ..honeypot.mqtt_honeypot import simulate_mqtt_message, simulate_broker_status
 from ..detection.attack_classifier import classify_attack, get_attack_types
 from ..scoring.threat_scoring import get_threat_level, calculate_threat_score
 from ..reporting.report_builder import HoneypotReport, HoneypotFinding
