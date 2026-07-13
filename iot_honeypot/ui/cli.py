@@ -74,7 +74,7 @@ def credentials() -> None:
 
 
 @cli.command()
-def attack-types() -> None:
+def attack_types() -> None:
     """Lista tipos de ataque detectados."""
     types = get_attack_types()
     click.echo(f"[*] Tipos de ataque: {len(types)}")

@@ -16,7 +16,7 @@ def export_json(report: HoneypotReport, output_path: str | Path) -> Path:
         "overall_severity": report.overall_severity,
         "summary": report.summary,
         "findings": [
-            {"category": f.category, "detail": f.detail, "severity": f.severity, "source_ip": f.source_ip}
+            {"category": f.category, "detail": f.detail, "severity": f.severity, "source_ip": f.source_ip, "evidence": f.evidence}
             for f in report.findings
         ],
     }
