@@ -11,6 +11,7 @@ from ..detection.attack_classifier import classify_attack, get_attack_types
 from ..scoring.threat_scoring import get_threat_level, calculate_threat_score
 from ..reporting.report_builder import HoneypotReport, HoneypotFinding
 from ..reporting.json_exporter import export_json
+from ..reporting.html_exporter import export_html
 
 
 @click.group()
@@ -97,7 +98,7 @@ def classify(commands: str, source_ip: str) -> None:
 
 @cli.command()
 @click.option("--output", default="reporte")
-@click.option("--format", "fmt", type=click.Choice(["json", "both"]), default="json")
+@click.option("--format", "fmt", type=click.Choice(["json", "html", "both"]), default="json")
 def report(output: str, fmt: str) -> None:
     """Generar reporte."""
     report_obj = HoneypotReport(device_type="ip_camera")
@@ -109,6 +110,9 @@ def report(output: str, fmt: str) -> None:
     if fmt in ("json", "both"):
         p = export_json(report_obj, f"{output}.json")
         click.echo(f"[+] Reporte JSON: {p}")
+    if fmt in ("html", "both"):
+        h = export_html(report_obj, f"{output}.html")
+        click.echo(f"[+] Reporte HTML: {h}")
 
 
 def main() -> None:
